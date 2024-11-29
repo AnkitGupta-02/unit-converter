@@ -1,19 +1,17 @@
-import React from 'react'
+import React from 'react';
+import classNames from 'classnames';
 
-function Input({ labelText, inputType, inputName, inputValue, onChange, placeholder }) {
+function Input({ type, value, onChange, placeholder,className }) {
+
+  const finalClassNames = classNames(className,"p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500")
   return (
-    <div className="flex flex-col gap-2">
-        <label htmlFor='inputText' className="text-sm font-medium text-gray-700">
-            {labelText}
-        </label>
+    <div className="">
         <input 
-        type={inputType}
-        id={inputName}
-        name={inputName}
-        value={inputValue}
+        type={type}
+        value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
+        className={finalClassNames}
         />
     </div>
   )

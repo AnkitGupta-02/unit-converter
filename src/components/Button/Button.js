@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import classNames from 'classnames';
 
-function Button() {
+function Button({className,children}) {
+  const finalClassNames = classNames(className,"border py-2 px-6")
   return (
     <>
-    <button className='border py-2 px-6'>
-       submit
+    <button className={finalClassNames}>
+       {children}
     </button>
     </>
   )
