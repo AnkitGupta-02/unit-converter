@@ -31,7 +31,7 @@ function LengthForm({onSubmit}) {
     <div >
       <form onSubmit={handleSubmit}>
         <Input
-          type="text"
+          type="number"
           value={data}
           onChange={(e) => setData(e.target.value)}
           placeholder="Enter value to convert"
