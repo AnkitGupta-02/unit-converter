@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-200">
+    <div className="bg-gradient-to-br from-gray-100 to-blue-200">
     <HomePage/>
     </div>
   )
