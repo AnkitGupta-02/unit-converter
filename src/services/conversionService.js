@@ -26,5 +26,3 @@ export function temperatureConvert(value, from, to) {
     return convertFunction(value);
 }
 
-
-

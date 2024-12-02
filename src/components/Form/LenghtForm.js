@@ -37,7 +37,7 @@ function LengthForm({onSubmit}) {
           placeholder="Enter value to convert"
           className="w-full p-2 mb-4 border border-teal-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
-        <div className="flex gap-x-4 ">
+        <div className="md:flex gap-x-4 ">
         <div className="mb-4">
         <label className="block mb-2 font-medium text-gray-700">Unit to Convert from</label>
           <Dropdown

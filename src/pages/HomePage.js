@@ -31,10 +31,10 @@ function HomePage() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-gradient-to-br from-blue-50 to-teal-100">
-      <h2 className="mb-4 text-3xl font-bold text-gray-800">Unit Converter</h2>
-      <nav className="flex mb-4 text-xl font-medium text-center text-gray-800 gap-x-6">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="p-6 rounded-lg shadow-md max:w-96 bg-gradient-to-br from-blue-50 to-teal-100">
+      <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">Unit Converter</h2>
+      <nav className="flex mb-4 text-lg font-medium text-center text-gray-800 md:text-xl gap-x-6">
         <button onClick={() => handleTabChange("length")} className='text-teal-500 hover:underline'>Length</button>
         <button onClick={() => handleTabChange("weight")} className='text-teal-500 hover:underline'>Weight</button>
         <button onClick={() => handleTabChange("temperature")} className='text-teal-500 hover:underline'>Temperature</button>

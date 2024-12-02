@@ -47,12 +47,12 @@ function Dropdown({ options, value, onChange }) {
   });
 
   return (
-    <div ref={divEl} className="relative w-48">
+    <div ref={divEl} className="relative md:w-48">
       <div className="flex justify-between w-full px-4 py-2 border border-teal-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal-500" onClick={handleClick}>
         {value?.label || "Select..."}
         <GoChevronDown />
       </div>
-      {isOpen && <div className="absolute z-10 w-full p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">{renderedOptions}</div>}
+      {isOpen && <div className="absolute left-0 z-50 w-full p-2 transition-all ease-in-out bg-white border border-gray-300 rounded-md shadow-lg top-full focus:outline-none focus:ring-2 focus:ring-teal-500">{renderedOptions}</div>}
     </div>
   );
 }
