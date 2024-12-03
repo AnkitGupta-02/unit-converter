@@ -37,7 +37,7 @@ function Dropdown({ options, value, onChange }) {
   const renderedOptions = options.map((option) => {
     return (
       <div
-        className="px-4 py-2 text-gray-700 bg-white hover:bg-gray-100"
+        className="px-4 py-2 text-gray-700 bg-white max-md:py-3 hover:bg-gray-100 max-md:border-b-2"
         onClick={() => handleOptionClick(option)}
         key={option.value}
       >
@@ -52,7 +52,7 @@ function Dropdown({ options, value, onChange }) {
         {value?.label || "Select..."}
         <GoChevronDown />
       </div>
-      {isOpen && <div className="absolute left-0 z-50 w-full p-2 transition-all ease-in-out bg-white border border-gray-300 rounded-md shadow-lg top-full focus:outline-none focus:ring-2 focus:ring-teal-500">{renderedOptions}</div>}
+      {isOpen && <div className="fixed z-50 w-10/12 p-2 transition-all ease-in-out bg-white border border-gray-300 rounded-md shadow-lg max-md:inset-x-8 max-lg:inset-x-56 max-md:text-2xl max-lg:inset-y-5 max-lg:text-xl max-md:top-60 md:w-6/12 lg:w-full max-lg:h-fit lg:z-10 lg:absolute lg:left-0 focus:outline-none focus:ring-2 focus:ring-teal-500">{renderedOptions}</div>}
     </div>
   );
 }
