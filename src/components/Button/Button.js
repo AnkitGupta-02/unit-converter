@@ -1,13 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Button({className,children}) {
-  const finalClassNames = classNames(className,"border py-2 px-6")
+function Button({className,children, ...rest}) {
+  const finalClassNames = classNames(className,"border p-2 font-semibold text-lg")
   return (
     <>
-    <button className={finalClassNames}>
+    <button className={finalClassNames} {...rest}>
        {children}
-    </button>
+    </button> 
     </>
   )
 }

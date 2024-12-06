@@ -1,28 +1,25 @@
-import lengthConversions from '../utils/lengthUtils.js';
-import temperatureConversions from '../utils/temperatureUtils.js';
-import weightConversions from '../utils/weightUtils.js';
+import conversions from "../utils/conversionsUtils.js";
 
-export function lengthConvert(value, from, to) {
-    if(!value || !from|| !to){
-        throw new Error(`Unsupported conversion value ${value}`);
-    }
-    
-    return value * lengthConversions[from][to];
-};
+export function convert(value, from, to, type) {
+  if (!value || !from || !to || !type) {
+    throw new Error(`Invalid input: Ensure all parameters are provided`);
+  }
 
+  const typeConversions = conversions[type.toLowerCase()];
+  if (
+    !typeConversions ||
+    !typeConversions[from.toLowerCase()] ||
+    !typeConversions[to.toLowerCase()]
+  ) {
+    throw new Error(
+      `Unsupported conversion type: ${type}, from: ${from}, to: ${to}`
+    );
+  }
 
-export function weightConvert(value, from, to) {
-    if(!value || !from|| !to){
-        throw new Error(`Unsupported conversion value ${value}`);
-    }
-    return value * weightConversions[from][to];
+  const conversionRule = typeConversions[from.toLowerCase()][to.toLowerCase()];
+
+  // If it's a function (temperature), call it; otherwise, perform direct multiplication
+  return typeof conversionRule === "function"
+    ? conversionRule(value)
+    : value * conversionRule;
 }
-
-export function temperatureConvert(value, from, to) {
-    if(!value || !temperatureConversions[from.toLowerCase()]|| !temperatureConversions[to.toLowerCase()]){
-        throw new Error(`Unsupported conversion value ${value}`);
-    }
-    const convertFunction = temperatureConversions[from.toLowerCase()][to.toLowerCase()];
-    return convertFunction(value);
-}
-
