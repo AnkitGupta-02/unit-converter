@@ -17,7 +17,7 @@ function NavBar() {
   return (
     <div className="p-2 ">
       <h2 className="text-3xl font-medium text-center">Unit Converter</h2>
-      <nav className="flex items-center justify-between border-2 md:justify-evenly">
+      <nav className="flex items-center justify-between md:justify-evenly">
         <Button
           onClick={() => handleTabChange("length")}
           className={activeTab === "length" ? "text-teal-500 underline" : ""}

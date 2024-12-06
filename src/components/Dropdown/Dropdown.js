@@ -55,7 +55,7 @@ function Dropdown({ options, value, onChange }) {
         <GoChevronDown />
       </div>
       {isOpen && (
-        <div className="fixed z-50 text-xl bg-white border border-gray-300 rounded-md shadow-lg h-96 md:h-80 lg:h-fit lg:w-full md:top-6 md:text-base md:inset-x-60 inset-x-12 lg:inset-x-0 lg:top-10 top-10 w-80 md:w-96 lg:absolute focus:outline-none focus:ring-2 focus:ring-teal-500">
+        <div className="fixed z-50 text-xl bg-white border border-gray-300 rounded shadow-lg md:overflow-y-auto touch-pinch-zoom h-96 md:h-72 lg:h-fit lg:w-full md:top-7 md:text-base md:inset-x-72 inset-x-12 lg:inset-x-0 lg:top-10 top-10 w-80 md:w-96 lg:absolute focus:outline-none focus:ring-2 focus:ring-teal-500">
           {renderedOptions}
         </div>
       )}
