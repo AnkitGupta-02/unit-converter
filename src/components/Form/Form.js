@@ -84,7 +84,7 @@ function Form() {
         </div>
       </div>
       {result && (
-        <div className="flex ml-2 text-2xl font-medium text-black gap-x-4">
+        <div className="flex ml-2 text-xl font-medium text-black md:text-2xl gap-x-4">
           <span className="text-red-700">Result:</span>{data} {fromSelection.symbol} = {result} {toSelection.symbol}
         </div>
       )}
