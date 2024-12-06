@@ -4,7 +4,7 @@ import Form from "../components/Form/Form";
 
 function HomePage() {
   return (
-    <div className="px-2 py-4 border border-blue-500 h-4/6 md:h-full">
+    <div className="px-2 py-4 h-4/6 md:h-full">
       <NavBar />
       <Form />
     </div>

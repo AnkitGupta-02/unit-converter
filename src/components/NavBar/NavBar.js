@@ -15,7 +15,7 @@ function NavBar() {
   };
 
   return (
-    <div className="p-2 border border-red-500">
+    <div className="p-2 ">
       <h2 className="text-3xl font-medium text-center">Unit Converter</h2>
       <nav className="flex items-center justify-between border-2 md:justify-evenly">
         <Button

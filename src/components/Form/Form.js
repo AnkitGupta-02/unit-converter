@@ -43,7 +43,7 @@ function Form() {
   }, [data, fromSelection, toSelection, activeTab, setResult]);
 
   return (
-    <div className="p-2 border border-pink-500">
+    <div className="p-2 ">
       <div className="md:flex gap-x-6 ">
         <Input
           type="number"
