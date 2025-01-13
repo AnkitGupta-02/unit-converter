@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { GoChevronDown } from "react-icons/go";
 import useUnitContext from "../../hooks/use-UnitContext";
+
 
 export default function Accordion({ list = [], getSelected }) {
   const {
@@ -8,6 +9,21 @@ export default function Accordion({ list = [], getSelected }) {
   } = useUnitContext();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(list[0]);
+  const divEl = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (divEl.current && !divEl.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handler, true);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
 
   const handleClick = () => setIsOpen(!isOpen);
 
@@ -46,17 +62,19 @@ export default function Accordion({ list = [], getSelected }) {
   }, [getSelected, value]);
 
   return (
-    <div className="relative w-full select-none">
+     <div ref={divEl} className="relative select-none w-60">
+      
       <div
         onClick={handleClick}
-        className="flex items-center w-full px-3 py-1 text-lg border rounded-md border-neutral-800"
+        className="flex items-center w-full px-3 py-1 text-lg border rounded-md "
       >
-        <div className="w-full pr-2">{value.label}</div>
+        <div className="w-full pr-2 ">{value.label}</div>
         <GoChevronDown />
       </div>
       {isOpen && (
-        <div className="w-full bg-white top-4 absoulte">{renderList}</div>
+        <div className="absolute z-10 w-full bg-white border ">{renderList}</div>
       )}
     </div>
+   
   );
 }
