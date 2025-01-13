@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Input from "../Input/Input";
-import Dropdown from "../Dropdown/Dropdown";
 import { convert } from "../../services/conversionService.js";
 import useUnitContext from "../../hooks/use-UnitContext.js";
 import options from "../../utils/DropdownList.js";
+import Accordion from "../Accordion/Accordion.js";
 
 function Form() {
   const {
@@ -19,13 +19,12 @@ function Form() {
   } = useUnitContext();
 
   const renderOptions = () => {
-    if (activeTab === "length") {
-      return options.length.units;
-    } else if (activeTab === "weight") {
-      return options.weight.units;
-    } else if (activeTab === "temperature") {
-      return options.temperature.units;
-    }
+    const tabOptions = {
+      length: options.length.units,
+      weight: options.weight.units,
+      temperature: options.temperature.units,
+    };
+    return tabOptions[activeTab];
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ function Form() {
   }, [data, fromSelection, toSelection, activeTab, setResult]);
 
   return (
-    <div className="p-2 ">
+    <div className="p-2 border border-black">
       <div className="md:flex gap-x-6 ">
         <Input
           type="number"
@@ -66,29 +65,27 @@ function Form() {
           <label className="block mb-2 font-medium text-gray-700">
             Unit to Convert from
           </label>
-          <Dropdown
-            options={renderOptions(activeTab)}
-            value={fromSelection}
-            onChange={(option) => setFromSelection(option)}
+          <Accordion
+            list={renderOptions(activeTab)}
+            getSelected={(value) => setFromSelection(value)}
           />
         </div>
         <div className="mb-4">
           <label className="block mb-2 font-medium text-gray-700">
             Unit to Convert to
           </label>
-          <Dropdown
-            options={renderOptions(activeTab)}
-            value={toSelection}
-            onChange={(option) => setToSelection(option)}
+          <Accordion
+            list={renderOptions(activeTab)}
+            getSelected={(value) => setToSelection(value)}
           />
         </div>
       </div>
       {result && (
         <div className="flex ml-2 text-xl font-medium text-black md:text-2xl gap-x-4">
-          <span className="text-red-700">Result:</span>{data} {fromSelection.symbol} = {result} {toSelection.symbol}
+          <span className="text-red-700">Result:</span>
+          {data} {fromSelection.symbol} = {result} {toSelection.symbol}
         </div>
       )}
-      
     </div>
   );
 }
