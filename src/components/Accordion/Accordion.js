@@ -1,6 +1,7 @@
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import useUnitContext from "../../hooks/use-UnitContext";
+import Modal from "../Modal";
 
 
 export default function Accordion({ list = [], getSelected }) {
@@ -9,21 +10,21 @@ export default function Accordion({ list = [], getSelected }) {
   } = useUnitContext();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(list[0]);
-  const divEl = useRef();
+  // const divEl = useRef();
 
-  useEffect(() => {
-    const handler = (event) => {
-      if (divEl.current && !divEl.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handler = (event) => {
+  //     if (divEl.current && !divEl.current.contains(event.target)) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("click", handler, true);
+  //   document.addEventListener("click", handler, true);
 
-    return () => {
-      document.removeEventListener("click", handler);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("click", handler);
+  //   };
+  // }, []);
 
   const handleClick = () => setIsOpen(!isOpen);
 
@@ -53,6 +54,7 @@ export default function Accordion({ list = [], getSelected }) {
       />
     );
   });
+
   useEffect(() => {
     setValue(list[0])
   }, [activeTab,list]);
@@ -62,17 +64,17 @@ export default function Accordion({ list = [], getSelected }) {
   }, [getSelected, value]);
 
   return (
-     <div ref={divEl} className="relative select-none w-60">
+     <div className="relative select-none w-72">
       
       <div
-        onClick={handleClick}
-        className="flex items-center w-full px-3 py-1 text-lg border rounded-md "
+        onClick={()=>setIsOpen(true)}
+        className="flex items-center justify-end w-full px-3 py-2 text-lg border rounded-md "
       >
-        <div className="w-full pr-2 ">{value.label}</div>
+        <div className="w-full">{value.label}</div>
         <GoChevronDown />
       </div>
       {isOpen && (
-        <div className="absolute z-10 w-full bg-white border ">{renderList}</div>
+        <Modal onClose={handleClick} className="">{renderList}</Modal>
       )}
     </div>
    

@@ -39,12 +39,12 @@ function NavBar() {
   });
 
   return (
-    <div className="p-2">
+    <header className="">
       <h2 className="text-3xl font-medium text-center">Unit Converter</h2>
       <nav className="flex items-center justify-between md:justify-evenly">
         {renderTabList}
       </nav>
-    </div>
+    </header>
   );
 }
 

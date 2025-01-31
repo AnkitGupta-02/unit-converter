@@ -42,8 +42,8 @@ function Form() {
   }, [data, fromSelection, toSelection, activeTab, setResult]);
 
   return (
-    <div className="flex flex-col justify-evenly lg:h-3/6 h-4/6">
-      <div className="justify-center pt-2 md:flex gap-x-6 ">
+    <div className="">
+      <div className="">
         <Input
           type="number"
           value={data}
@@ -56,12 +56,12 @@ function Form() {
           value={result}
           readOnly
           onChange={(e) => setResult(e.target.value)}
-          placeholder="Conveted value"
+          placeholder="Converted value"
           className=""
         />
       </div>
-      <div className="w-full justify-evenly md:flex ">
-        <div className="flex flex-col px-2 gap-y-2">
+      <div className="flex flex-col gap-4">
+        <div className="">
           <label className="font-medium text-gray-700">
             Unit to Convert from
           </label>
@@ -70,7 +70,7 @@ function Form() {
             getSelected={(value) => setFromSelection(value)}
           />
         </div>
-        <div className="flex flex-col px-2 gap-y-2">
+        <div className="">
           <label className="font-medium text-gray-700">
             Unit to Convert to
           </label>
@@ -80,15 +80,12 @@ function Form() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center w-full ">
-      {result && (
-        <div className="flex w-5/6 text-xl font-medium text-black md:text-2xl gap-x-4">
+      <div className="p-4">
+        <div className={result ? "visible" : "invisible"}>
           <span className="text-red-700">Result:</span>
-          {data} {fromSelection.symbol} = {result} {toSelection.symbol}
+          {data} {fromSelection?.symbol} = {result} {toSelection?.symbol}
         </div>
-      )}
       </div>
-      
     </div>
   );
 }
